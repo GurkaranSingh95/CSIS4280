@@ -7,13 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ImageButton
-        android:id="@+id/addButton"
-        style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        app:srcCompat="@android:drawable/ic_input_add" />
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
