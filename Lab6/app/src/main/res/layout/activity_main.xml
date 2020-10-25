@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/addButton"
         style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,15 +16,18 @@
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/teamTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Team" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/dataTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="DATA" />
@@ -32,7 +35,11 @@
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:padding="4dp"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/view1_layout"/>
 
 </LinearLayout>
