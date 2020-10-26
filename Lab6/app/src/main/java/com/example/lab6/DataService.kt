@@ -2,12 +2,13 @@ package com.example.lab6
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
+import com.squareup.moshi.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import org.json.JSONObject
 import java.io.IOException
+import java.security.spec.PSSParameterSpec
+
 
 class DataService() {
 
@@ -32,17 +33,19 @@ class DataService() {
                 for (item in list) {
                     println(item.toString())
                 }
-                dataListLiveData.postValue(list);
+//                dataListLiveData.postValue(list);
 //                return response.body()!!.string()
             }
         }.start()
 
     }
 
-    private val myType = Types.newParameterizedType(List::class.java, Data::class.java)
+    private val myType =
+        Types.newParameterizedType(List::class.java, Data::class.java)
 
     fun readFromJson(context: Context, jsonText: String): List<Data>? {
-        val moshi: Moshi = Moshi.Builder().build()
+        val moshi: Moshi = Moshi.Builder()
+            .build()
         val adapter: JsonAdapter<List<Data>> = moshi.adapter(myType)
         val list = adapter.fromJson(jsonText)
 

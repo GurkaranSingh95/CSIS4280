@@ -13,16 +13,6 @@ import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private val teamListLiveData = MutableLiveData<List<Team>>()
-//    val studentNames = ArrayList<String>(
-//        Arrays.asList(
-//            "Tushit Nag Kanuri",
-//            "Nam Phan",
-//            "Gukaran Singh",
-//            "Agam Choudhary"
-//        )
-//    )
-//    val studentID =
-//        ArrayList<String>(Arrays.asList("300298577", "300298577", "300298577", "300298577"))
 
     val teamList = ArrayList<Team>()
 
@@ -50,5 +40,5 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    }
+}
 

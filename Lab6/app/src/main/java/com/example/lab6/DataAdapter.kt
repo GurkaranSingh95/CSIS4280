@@ -34,8 +34,8 @@ class DataAdapter(private val teamList: List<Data>) : RecyclerView.Adapter<DataA
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         val currentItem = teamList[position]
 
-        holder.first?.setText(currentItem.firstName)
-        holder.last?.setText(currentItem.lastName)
+        holder.first?.setText(currentItem.first_name)
+        holder.last?.setText(currentItem.last_name)
         holder.pet?.setText(currentItem.pet)
 //        holder.possible?.setText(currentItem.possible)
     }
