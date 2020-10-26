@@ -37,7 +37,7 @@ class DataAdapter(private val teamList: List<Data>) : RecyclerView.Adapter<DataA
         holder.first?.setText(currentItem.firstName)
         holder.last?.setText(currentItem.lastName)
         holder.pet?.setText(currentItem.pet)
-        holder.possible?.setText(currentItem.possible)
+//        holder.possible?.setText(currentItem.possible)
     }
 
 

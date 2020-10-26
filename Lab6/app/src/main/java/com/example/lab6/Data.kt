@@ -6,5 +6,5 @@ data class Data (
     val firstName: String,
     val lastName: String,
     val pet: String,
-    val possible: String
+    val possible: JSONArray
 )
