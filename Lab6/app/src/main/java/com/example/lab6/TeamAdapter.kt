@@ -8,16 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.view1_layout.view.*
 
-class TeamAdapter(private val teamList: List<Team>) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
+class TeamAdapter(private var teamList: List<Team>) :
+    RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
 
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view1_layout,parent,false)
-
-
-
-
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.view1_layout, parent, false)
         return TeamViewHolder(itemView)
 
     }
@@ -27,23 +25,18 @@ class TeamAdapter(private val teamList: List<Team>) : RecyclerView.Adapter<TeamA
         val currentItem = teamList[position]
 
         holder.imageView.setImageResource(currentItem.imgResource)
-        holder.studentName.text = currentItem.studentName
-        holder.studentID.text = currentItem.studentID
-
-
+        holder.studentName.text = currentItem.name
+        holder.studentID.text = currentItem.id
 
 
     }
 
     override fun getItemCount(): Int {
-
         return teamList.size
     }
 
 
-
-
-    class TeamViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
+    class TeamViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val imageView: ImageView = itemView.profilePic
 
@@ -51,7 +44,11 @@ class TeamAdapter(private val teamList: List<Team>) : RecyclerView.Adapter<TeamA
 
         val studentID: TextView = itemView.memberID
 
+    }
 
+    internal fun setItems(data: List<Team>) {
+        this.teamList = data
+        notifyDataSetChanged()
     }
 
 
