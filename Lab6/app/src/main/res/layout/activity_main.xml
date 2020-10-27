@@ -40,6 +40,6 @@
         android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/view1_layout"/>
+        tools:listitem="@layout/view2_layout"/>
 
 </LinearLayout>
