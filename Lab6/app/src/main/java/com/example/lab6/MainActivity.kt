@@ -16,29 +16,22 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
     private val teamListLiveData = MutableLiveData<List<Team>>()
 
-    var teamService= TeamService()
+    var teamService = TeamService()
     var dataService: DataService = DataService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    var context = this
-
-
-
+        var context = this
+        teamService.run("http://54.225.179.78:5000/team", context)
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-                when(tabLayout.selectedTabPosition)
-                {
+                when (tabLayout.selectedTabPosition) {
                     0 -> {
-
-
-//                        teamService.run("http://54.225.179.78:5000/team",context)
-
+                        teamService.run("http://54.225.179.78:5000/team", context)
                     }
                     1 -> {
-
                         dataService.run("http://54.225.179.78:5000/data", context)
                     }
 
@@ -59,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         })
 
 
-       teamService.teamListLiveData.observe(this, Observer { ms ->
+        teamService.teamListLiveData.observe(this, Observer { ms ->
             ms?.let {
                 println("NEW LIST: " + it.size)
                 recyclerView.adapter = TeamAdapter(it)
@@ -69,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         dataService.dataListLiveData.observe(this, Observer { ms ->
             ms?.let {
-                println("NEW LIST: " + it.size)
+                println("NEW Data LIST: " + it.size)
 
                 recyclerView.adapter = DataAdapter(it)
             }
