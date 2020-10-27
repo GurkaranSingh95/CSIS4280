@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
@@ -63,7 +64,7 @@ class DataAdapter(private val teamList: List<Data>,private val context: Context)
         val last: TextView? = itemView.lName
         val pet: TextView? = itemView.petName
         val possible: TextView? = itemView.possible
-        val editButton:Button? = itemView.editButton
+        val editButton:ImageButton? = itemView.editButton
 
 
     }
