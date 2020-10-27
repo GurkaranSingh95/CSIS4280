@@ -46,11 +46,8 @@ class DataAdapter(private val teamList: List<Data>,private val context: Context)
         holder.pet?.setText(currentItem.pet)
         holder.possible?.setText(currentItem.possible.toString())
         holder.editButton?.setOnClickListener {
-
             val intent = Intent(context, AddEmptyActivity::class.java)
             context.startActivity(intent)
-
-
         }
 
     }

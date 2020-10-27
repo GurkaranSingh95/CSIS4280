@@ -2,6 +2,7 @@ package com.example.lab6
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -81,7 +82,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
 
-
+        addButton.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, AddEmptyActivity::class.java)
+            startActivity(intent)
+        })
 
     }
 

@@ -2,6 +2,8 @@ package com.example.lab6
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_data_layout.*
 
 class AddEmptyActivity : AppCompatActivity() {
@@ -24,7 +26,7 @@ class AddEmptyActivity : AppCompatActivity() {
 
     fun addData() {
 
-       
+
         editData.first_name = fNameEdit.text.toString()
         editData.last_name = lNameEdit.text.toString()
         editData.pet = petEdit.text.toString()
@@ -48,5 +50,17 @@ class AddEmptyActivity : AppCompatActivity() {
         editData.possible = posList
 
         println("==================PossibleData" + editData.possible.toString() + "\n")
+
+        var service = DataService();
+        service.run("http://54.225.179.78:5000/data", this)
+        service.dataListLiveData.observe(this, Observer { ms ->
+            ms?.let {
+
+                service.addNew("http://54.225.179.78:5000/data", editData);
+                finish()
+            }
+
+        })
+
     }
 }

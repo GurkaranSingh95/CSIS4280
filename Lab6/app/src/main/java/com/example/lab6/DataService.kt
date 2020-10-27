@@ -1,13 +1,18 @@
 package com.example.lab6
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.squareup.moshi.*
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import org.json.JSONObject
+import okhttp3.RequestBody
 import java.io.IOException
-import java.security.spec.PSSParameterSpec
 
 
 class DataService() {
@@ -15,6 +20,7 @@ class DataService() {
     private val client = OkHttpClient()
 
     val dataListLiveData = MutableLiveData<List<Data>>()
+    var dataList: List<Data> = arrayListOf();
 
 
     @Throws(IOException::class)
@@ -34,6 +40,7 @@ class DataService() {
                     for (item in list) {
                         println(item.toString())
                     }
+                    dataList = list;
                     dataListLiveData.postValue(list);
                 } catch (e: Exception) {
 
@@ -42,6 +49,33 @@ class DataService() {
             }
         }.start()
 
+    }
+
+    fun addNew(url: String, data: Data) {
+
+        dataList += data;
+
+        this.callUpdateApi(url);
+    }
+
+    val JSON: MediaType = MediaType.get("application/json; charset=utf-8");
+
+    @Throws(IOException::class)
+    fun callUpdateApi(url: String?) {
+        Thread {
+            var json = jsonToString(dataList);
+            println("=====Data=====" + json);
+            val body: RequestBody = RequestBody.create(JSON, json)
+            val request: Request = Request.Builder()
+                .url(url)
+                .post(body)
+                .build()
+            client.newCall(request).execute().use { response ->
+                {
+                    println(response.message())
+                }
+            }
+        }.start()
     }
 
     private val myType =
@@ -54,5 +88,13 @@ class DataService() {
         val list = adapter.fromJson(jsonText)
 
         return list;
+    }
+
+    fun jsonToString(list: List<Data>): String {
+        var jsonString = "";
+        val gsonPretty = GsonBuilder().setPrettyPrinting().create()
+        jsonString = gsonPretty.toJson(list.toList())
+        println(jsonString)
+        return jsonString;
     }
 }
