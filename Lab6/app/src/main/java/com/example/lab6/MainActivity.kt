@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var context = this
 
-
+        teamService.run("http://54.225.179.78:5000/team", context)
 
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -33,11 +33,14 @@ class MainActivity : AppCompatActivity() {
                     0 -> {
 
 
+
+                        teamService.run("http://54.225.179.78:5000/team", context)
+
+
                         teamService.run("http://54.225.179.78:5000/team", context)
 
                     }
                     1 -> {
-
                         dataService.run("http://54.225.179.78:5000/data", context)
                     }
 
@@ -68,7 +71,11 @@ class MainActivity : AppCompatActivity() {
 
         dataService.dataListLiveData.observe(this, Observer { ms ->
             ms?.let {
+
                 println("NEW DATA LIST: " + it.size)
+
+                println("NEW Data LIST: " + it.size)
+
 
                 recyclerView.adapter = DataAdapter(it)
             }

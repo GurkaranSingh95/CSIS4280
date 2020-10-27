@@ -25,16 +25,20 @@ class DataService() {
                 .url(url)
                 .build()
             client.newCall(request).execute().use { response ->
-                var jsonText = response.body()!!.string();
-                println("====" + jsonText)
+                try {
+                    var jsonText = response.body()!!.string();
+                    println("====" + jsonText)
 
-                var list: List<Data> = readFromJson(context, jsonText) ?: emptyList();
-                println("====datalist===" + list.size)
-                for (item in list) {
-                    println(item.toString())
+                    var list: List<Data> = readFromJson(context, jsonText) ?: emptyList();
+                    println("====datalist===" + list.size)
+                    for (item in list) {
+                        println(item.toString())
+                    }
+                    dataListLiveData.postValue(list);
+                } catch (e: Exception) {
+
                 }
-               dataListLiveData.postValue(list);
-//                return response.body()!!.string()
+
             }
         }.start()
 
