@@ -1,16 +1,14 @@
 package com.example.lab6
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.OkHttpClient
-import java.io.IOException
-import kotlin.collections.ArrayList
+import kotlinx.android.synthetic.main.view2_layout.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,11 +31,8 @@ class MainActivity : AppCompatActivity() {
                     0 -> {
 
 
-
                         teamService.run("http://54.225.179.78:5000/team", context)
 
-
-                        teamService.run("http://54.225.179.78:5000/team", context)
 
                     }
                     1 -> {
@@ -77,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                 println("NEW Data LIST: " + it.size)
 
 
-                recyclerView.adapter = DataAdapter(it)
+                recyclerView.adapter = DataAdapter(it,this)
             }
 
         })
@@ -85,6 +80,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
+
 
 
     }

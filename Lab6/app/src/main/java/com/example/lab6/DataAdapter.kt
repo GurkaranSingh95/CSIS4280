@@ -1,26 +1,32 @@
 package com.example.lab6
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.Button
+
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.view1_layout.view.*
+
 import kotlinx.android.synthetic.main.view2_layout.view.*
 import org.json.JSONArray
 
-class DataAdapter(private val teamList: List<Data>) : RecyclerView.Adapter<DataAdapter.DataViewHolder>() {
+class DataAdapter(private val teamList: List<Data>,private val context: Context) : RecyclerView.Adapter<DataAdapter.DataViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
 
-//        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view1_layout,parent,false)
+
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view2_layout,parent,false)
 
 
 
 
         return DataViewHolder(itemView)
+
+
 
     }
 
@@ -37,7 +43,15 @@ class DataAdapter(private val teamList: List<Data>) : RecyclerView.Adapter<DataA
         holder.first?.setText(currentItem.first_name)
         holder.last?.setText(currentItem.last_name)
         holder.pet?.setText(currentItem.pet)
-//        holder.possible?.setText(currentItem.possible)
+        holder.possible?.setText(currentItem.possible.toString())
+        holder.editButton?.setOnClickListener {
+
+            val intent = Intent(context, AddUpdateData::class.java)
+            context.startActivity(intent)
+
+
+        }
+
     }
 
 
@@ -49,7 +63,9 @@ class DataAdapter(private val teamList: List<Data>) : RecyclerView.Adapter<DataA
         val last: TextView? = itemView.lName
         val pet: TextView? = itemView.petName
         val possible: TextView? = itemView.possible
+        val editButton:Button? = itemView.editButton
 
 
     }
+
 }

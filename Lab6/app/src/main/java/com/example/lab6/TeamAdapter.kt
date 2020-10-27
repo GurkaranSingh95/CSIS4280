@@ -23,8 +23,6 @@ class TeamAdapter(private var teamList: List<Team>) :
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
 
         val currentItem = teamList[position]
-
-        holder.imageView.setImageResource(currentItem.imgResource)
         holder.studentName.text = currentItem.name
         holder.studentID.text = currentItem.id
 
@@ -38,7 +36,6 @@ class TeamAdapter(private var teamList: List<Team>) :
 
     class TeamViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val imageView: ImageView = itemView.profilePic
 
         val studentName: TextView = itemView.memberName
 
