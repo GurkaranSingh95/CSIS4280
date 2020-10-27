@@ -47,7 +47,7 @@ class DataAdapter(private val teamList: List<Data>,private val context: Context)
         holder.possible?.setText(currentItem.possible.toString())
         holder.editButton?.setOnClickListener {
 
-            val intent = Intent(context, AddUpdateData::class.java)
+            val intent = Intent(context, AddEmptyActivity::class.java)
             context.startActivity(intent)
 
 

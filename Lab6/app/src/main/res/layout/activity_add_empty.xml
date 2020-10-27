@@ -95,18 +95,18 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/imageButton"-->
-<!--            style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="10dp"-->
-<!--            app:srcCompat="@android:drawable/ic_menu_add" />-->
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/imageButton"-->
+        <!--            style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="10dp"-->
+        <!--            app:srcCompat="@android:drawable/ic_menu_add" />-->
 
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/possibleEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -117,7 +117,7 @@
         android:id="@+id/createUpdateButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="70dp"
+        android:layout_margin="30dp"
         android:text="Button" />
 
 </LinearLayout>
