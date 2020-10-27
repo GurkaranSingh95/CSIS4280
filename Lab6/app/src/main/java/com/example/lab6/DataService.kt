@@ -33,7 +33,7 @@ class DataService() {
                 for (item in list) {
                     println(item.toString())
                 }
-//                dataListLiveData.postValue(list);
+               dataListLiveData.postValue(list);
 //                return response.body()!!.string()
             }
         }.start()
