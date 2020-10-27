@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.readjsondemo.utilities.FileHelper
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view2_layout.*
@@ -22,8 +23,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         var context = this
-
-        teamService.run("http://54.225.179.78:5000/team", context)
+        val url =
+            FileHelper.getDataFromAssets(this, "config.txt")
+        teamService.run(url+"team", context)
 
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -32,12 +34,12 @@ class MainActivity : AppCompatActivity() {
                     0 -> {
 
 
-                        teamService.run("http://54.225.179.78:5000/team", context)
+                        teamService.run(url+"team", context)
 
 
                     }
                     1 -> {
-                        dataService.run("http://54.225.179.78:5000/data", context)
+                        dataService.run(url+"data", context)
                     }
 
 

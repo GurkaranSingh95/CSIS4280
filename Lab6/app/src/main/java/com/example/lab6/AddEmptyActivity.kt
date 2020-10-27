@@ -3,6 +3,7 @@ package com.example.lab6
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import com.example.readjsondemo.utilities.FileHelper
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_data_layout.*
 
@@ -52,7 +53,9 @@ class AddEmptyActivity : AppCompatActivity() {
         println("==================PossibleData" + editData.possible.toString() + "\n")
 
         var service = DataService();
-        service.run("http://54.225.179.78:5000/data", this)
+        val url =
+            FileHelper.getDataFromAssets(this, "config.txt")
+        service.run(url + "data", this)
         service.dataListLiveData.observe(this, Observer { ms ->
             ms?.let {
 
